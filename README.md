@@ -52,6 +52,8 @@ This BLAS extension implements the operation
 
 <!-- </equation> -->
 
+where `⊘` denotes the [Hadamard division][hadamard-division].
+
 </section>
 
 <!-- /.intro -->
@@ -227,6 +229,8 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 [branches-url]: https://github.com/stdlib-js/blas-ext-base-ndarray-dxdy/blob/main/branches.md
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/blas-ext-base-ndarray-dxdy/main/LICENSE
+
+[hadamard-division]: https://en.wikipedia.org/wiki/Hadamard_product_(matrices)#Analogous_operations
 
 </section>
 
