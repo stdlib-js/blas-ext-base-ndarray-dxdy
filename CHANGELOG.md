@@ -4,12 +4,13 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2026-08-03)
+## Unreleased (2026-08-30)
 
 <section class="features">
 
 ### Features
 
+-   [`92472f9`](https://github.com/stdlib-js/stdlib/commit/92472f9deaac2a781dd670585b1d24da8732b85f) - add C implementation for `blas/ext/base/ndarray/dxdy` [(#14620)](https://github.com/stdlib-js/stdlib/pull/14620)
 -   [`d38e0b2`](https://github.com/stdlib-js/stdlib/commit/d38e0b25c38c7c23272d5b51a1086e1fba39c2e6) - add `blas/ext/base/ndarray/dxdy` [(#13565)](https://github.com/stdlib-js/stdlib/pull/13565)
 
 </section>
@@ -22,6 +23,7 @@
 
 <details>
 
+-   [`92472f9`](https://github.com/stdlib-js/stdlib/commit/92472f9deaac2a781dd670585b1d24da8732b85f) - **feat:** add C implementation for `blas/ext/base/ndarray/dxdy` [(#14620)](https://github.com/stdlib-js/stdlib/pull/14620) _(by Arjan-P, Athan Reines)_
 -   [`7d094cf`](https://github.com/stdlib-js/stdlib/commit/7d094cf3a0884ea538611332e6355facda825489) - **docs:** add link [(#13685)](https://github.com/stdlib-js/stdlib/pull/13685) _(by Karan Anand)_
 -   [`4a0c3be`](https://github.com/stdlib-js/stdlib/commit/4a0c3be4719f713b69a8ff6b66cc3b0573bf4444) - **docs:** update Markdown equation elements _(by stdlib-bot)_
 -   [`f25221d`](https://github.com/stdlib-js/stdlib/commit/f25221d5fcb5e84cb0ad4951db6f08f254c12d15) - **docs:** update Markdown equation elements _(by stdlib-bot)_
@@ -38,8 +40,10 @@
 
 ### Contributors
 
-A total of 1 person contributed to this release. Thank you to this contributor:
+A total of 3 people contributed to this release. Thank you to the following contributors:
 
+-   Arjan-P
+-   Athan Reines
 -   Karan Anand
 
 </section>
