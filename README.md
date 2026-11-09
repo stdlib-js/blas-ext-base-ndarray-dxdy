@@ -58,32 +58,38 @@ where `⊘` denotes the [Hadamard division][hadamard-division].
 
 <!-- /.intro -->
 
-<section class="installation">
 
-## Installation
-
-```bash
-npm install @stdlib/blas-ext-base-ndarray-dxdy
-```
-
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
 
 <section class="usage">
 
 ## Usage
 
+To use in Observable,
+
 ```javascript
-var dxdy = require( '@stdlib/blas-ext-base-ndarray-dxdy' );
+dxdy = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-ndarray-dxdy@umd/browser.js' )
+```
+
+To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
+
+```javascript
+var dxdy = require( 'path/to/vendor/umd/blas-ext-base-ndarray-dxdy/index.js' )
+```
+
+To include the bundle in a webpage,
+
+```html
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-ndarray-dxdy@umd/browser.js"></script>
+```
+
+If no recognized module system is present, access bundle contents via the global scope:
+
+```html
+<script type="text/javascript">
+(function () {
+    window.dxdy;
+})();
+</script>
 ```
 
 #### dxdy( arrays )
@@ -127,10 +133,15 @@ The function has the following parameters:
 
 <!-- eslint no-undef: "error" -->
 
-```javascript
-var discreteUniform = require( '@stdlib/random-discrete-uniform' );
-var ndarray2array = require( '@stdlib/ndarray-to-array' );
-var dxdy = require( '@stdlib/blas-ext-base-ndarray-dxdy' );
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-discrete-uniform@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-ndarray-dxdy@umd/browser.js"></script>
+<script type="text/javascript">
+(function () {
 
 var opts = {
     'dtype': 'float64'
@@ -144,6 +155,11 @@ console.log( ndarray2array( y ) );
 
 dxdy( [ x, y ] );
 console.log( ndarray2array( y ) );
+
+})();
+</script>
+</body>
+</html>
 ```
 
 </section>
@@ -152,160 +168,7 @@ console.log( ndarray2array( y ) );
 
 <!-- C interface documentation. -->
 
-* * *
 
-<section class="c">
-
-## C APIs
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- C usage documentation. -->
-
-<section class="usage">
-
-### Usage
-
-```c
-#include "stdlib/blas/ext/base/ndarray/dxdy.h"
-```
-
-#### stdlib_blas_ext_dxdy( arrays )
-
-Divides elements of a one-dimensional double-precision floating-point ndarray by the corresponding elements of a second one-dimensional double-precision floating-point ndarray and assigns the results to the second ndarray.
-
-```c
-#include "stdlib/ndarray/ctor.h"
-#include "stdlib/ndarray/dtypes.h"
-#include "stdlib/ndarray/index_modes.h"
-#include "stdlib/ndarray/orders.h"
-#include "stdlib/ndarray/base/bytes_per_element.h"
-#include <stdint.h>
-
-// Create ndarrays:
-const double dataX[] = { 6.0, 12.0, 20.0, 30.0, 42.0 };
-double dataY[] = { 2.0, 3.0, 4.0, 5.0, 6.0 };
-int64_t shape[] = { 5 };
-int64_t strides[] = { STDLIB_NDARRAY_FLOAT64_BYTES_PER_ELEMENT };
-int8_t submodes[] = { STDLIB_NDARRAY_INDEX_ERROR };
-
-struct ndarray *x = stdlib_ndarray_allocate( STDLIB_NDARRAY_FLOAT64, (uint8_t *)dataX, 1, shape, strides, 0, STDLIB_NDARRAY_ROW_MAJOR, STDLIB_NDARRAY_INDEX_ERROR, 1, submodes );
-struct ndarray *y = stdlib_ndarray_allocate( STDLIB_NDARRAY_FLOAT64, (uint8_t *)dataY, 1, shape, strides, 0, STDLIB_NDARRAY_ROW_MAJOR, STDLIB_NDARRAY_INDEX_ERROR, 1, submodes );
-
-// Perform computation:
-const struct ndarray *arrays[] = { x, y };
-stdlib_blas_ext_dxdy( arrays );
-
-// Free allocated memory:
-stdlib_ndarray_free( x );
-stdlib_ndarray_free( y );
-```
-
-The function accepts the following arguments:
-
--   **arrays**: `[in] struct ndarray**` list containing the following ndarrays:
-
-    -   `[in] struct ndarray*` a one-dimensional input ndarray.
-    -   `[inout] struct ndarray*` a one-dimensional output ndarray.
-
-```c
-void stdlib_blas_ext_dxdy( const struct ndarray *arrays[] );
-```
-
-</section>
-
-<!-- /.usage -->
-
-<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-</section>
-
-<!-- /.notes -->
-
-<!-- C API usage examples. -->
-
-<section class="examples">
-
-### Examples
-
-```c
-#include "stdlib/blas/ext/base/ndarray/dxdy.h"
-#include "stdlib/ndarray/ctor.h"
-#include "stdlib/ndarray/dtypes.h"
-#include "stdlib/ndarray/index_modes.h"
-#include "stdlib/ndarray/orders.h"
-#include "stdlib/ndarray/base/bytes_per_element.h"
-#include <stdint.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-int main( void ) {
-    // Create data buffers:
-    const double dataX[] = { 1.0, -2.0, 3.0, -4.0, 5.0, -6.0, 7.0, -8.0 };
-    double dataY[] = { 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 };
-
-    // Specify the number of array dimensions:
-    const int64_t ndims = 1;
-
-    // Specify the array shape:
-    int64_t shape[] = { 8 };
-
-    // Specify the array strides:
-    int64_t strides[] = { STDLIB_NDARRAY_FLOAT64_BYTES_PER_ELEMENT };
-
-    // Specify the byte offset:
-    const int64_t offset = 0;
-
-    // Specify the array order:
-    const enum STDLIB_NDARRAY_ORDER order = STDLIB_NDARRAY_ROW_MAJOR;
-
-    // Specify the index mode:
-    const enum STDLIB_NDARRAY_INDEX_MODE imode = STDLIB_NDARRAY_INDEX_ERROR;
-
-    // Specify the subscript index modes:
-    int8_t submodes[] = { STDLIB_NDARRAY_INDEX_ERROR };
-    const int64_t nsubmodes = 1;
-
-    // Create ndarrays:
-    struct ndarray *x = stdlib_ndarray_allocate( STDLIB_NDARRAY_FLOAT64, (uint8_t *)dataX, ndims, shape, strides, offset, order, imode, nsubmodes, submodes );
-    struct ndarray *y = stdlib_ndarray_allocate( STDLIB_NDARRAY_FLOAT64, (uint8_t *)dataY, ndims, shape, strides, offset, order, imode, nsubmodes, submodes );
-    if ( x == NULL || y == NULL ) {
-        fprintf( stderr, "Error allocating memory.\n" );
-        exit( 1 );
-    }
-
-    // Define a list of ndarrays:
-    const struct ndarray *arrays[] = { x, y };
-
-    // Perform computation:
-    stdlib_blas_ext_dxdy( arrays );
-
-    // Print the result:
-    for ( int i = 0; i < 8; i++ ) {
-        printf( "y[ %i ] = %lf\n", i, dataY[ i ] );
-    }
-
-    // Free allocated memory:
-    stdlib_ndarray_free( x );
-    stdlib_ndarray_free( y );
-}
-```
-
-</section>
-
-<!-- /.examples -->
-
-</section>
-
-<!-- /.c -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
