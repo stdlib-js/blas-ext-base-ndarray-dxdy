@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,16 +16,27 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
+
+import { float64ndarray } from '@stdlib/types/ndarray';
 
 /**
-* Divide elements of a one-dimensional double-precision floating-point ndarray by the corresponding elements of a second one-dimensional double-precision floating-point ndarray and assign the results to the second ndarray.
+* Divides elements of a one-dimensional double-precision floating-point ndarray by the corresponding elements of a second one-dimensional double-precision floating-point ndarray and assigns the results to the second ndarray.
 *
-* @module @stdlib/blas-ext-base-ndarray-dxdy
+* ## Notes
+*
+* -   The function expects the following ndarrays:
+*
+*     -   a one-dimensional input ndarray.
+*     -   a one-dimensional output ndarray.
+*
+* @param arrays - array-like object containing ndarrays
+* @returns output ndarray
 *
 * @example
 * var Float64Vector = require( '@stdlib/ndarray-vector-float64' );
-* var dxdy = require( '@stdlib/blas-ext-base-ndarray-dxdy' );
 *
 * var x = new Float64Vector( [ 6.0, 12.0, 20.0, 30.0, 42.0 ] );
 * var y = new Float64Vector( [ 2.0, 3.0, 4.0, 5.0, 6.0 ] );
@@ -33,26 +44,9 @@
 * var out = dxdy( [ x, y ] );
 * // returns <ndarray>[ 3.0, 4.0, 5.0, 6.0, 7.0 ]
 */
-
-// MODULES //
-
-var join = require( 'path' ).join;
-var tryRequire = require( '@stdlib/utils-try-require' );
-var isError = require( '@stdlib/assert-is-error' );
-var main = require( './main.js' );
-
-
-// MAIN //
-
-var dxdy;
-var tmp = tryRequire( join( __dirname, './native.js' ) );
-if ( isError( tmp ) ) {
-	dxdy = main;
-} else {
-	dxdy = tmp;
-}
+declare function dxdy( arrays: [ float64ndarray, float64ndarray ] ): float64ndarray;
 
 
 // EXPORTS //
 
-module.exports = dxdy;
+export = dxdy;
